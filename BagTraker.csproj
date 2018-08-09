@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F0D95F79-62BD-4E6A-8427-9A14C5BBF708}</ProjectGuid>
+    <ProjectGuid>{7D07E07F-6B0D-4D61-9F88-FDF8A1407697}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>BagTracker</RootNamespace>
-    <AssemblyName>BagTracker</AssemblyName>
+    <RootNamespace>BagTraker</RootNamespace>
+    <AssemblyName>BagTraker</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,14 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BagTracker.cs" />
+    <Compile Include="BagTraker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaskLib\Bug.cs" />
+    <Compile Include="TaskLib\Feature.cs" />
+    <Compile Include="TaskLib\Task.cs" />
+    <Compile Include="TaskLib\TaskPrivateMembers.cs" />
+    <Compile Include="TaskLib\TechnicalDebt.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Classes\Tasks\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

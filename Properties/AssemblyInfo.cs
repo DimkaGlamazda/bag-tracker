@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BagTracker")]
+[assembly: AssemblyTitle("BagTraker")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BagTracker")]
+[assembly: AssemblyProduct("BagTraker")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f0d95f79-62bd-4e6a-8427-9a14c5bbf708")]
+[assembly: Guid("7d07e07f-6b0d-4d61-9f88-fdf8a1407697")]
 
 // Version information for an assembly consists of the following four values:
 //
