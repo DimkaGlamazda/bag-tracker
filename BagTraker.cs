@@ -1,69 +1,121 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaskLib;
 
 namespace BagTraker
 {
+
     class BagTraker
     {
-
         static void Main(string[] args)
         {
-            try
+            bool loop = true;
+
+            int tasksAmount = 0;
+
+            do
             {
-                int tasksAmount = int.Parse(NumberValidation(GetValue("task amount")));
-                
-                TaskLib.Task[] tasksList = GenerateTasks(tasksAmount);
-
-                int sprintTime = 30;
-
-                while(sprintTime > 0)
+                try
                 {
-                    for(int i = 0; i < tasksList.Length; i++)
-                    {
-                        float statusValue = tasksList[i].WorkIteration();
+                    tasksAmount = int.Parse(NumberValidation(GetValue("task amount")));
+                    loop = false;
+                }
+                catch (Exception e)
+                {
+                    Console.Clear();
+                    Console.WriteLine(e.Message);
+                }
+            } while (loop);
 
-                        if (statusValue < 1)
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                    sprintTime--;
+            Console.Clear();
+
+            TaskLib.Task[] tasksList = new Task[0];
+
+            do
+            {
+                try
+                {
+                    tasksList = GenerateTasks(tasksAmount);
+                    loop = false;
+                }
+                catch (Exception e)
+                {
+                    Console.Clear();
+                    Console.WriteLine(e.Message);
+                    loop = true;
                 }
 
-                PrintSprintResult(tasksList);
-            }
-            catch(Exception e)
+            } while (loop);
+
+            Console.Clear();
+
+            do
             {
-                Console.Clear();
-                Console.WriteLine(e.Message);
-                Console.ReadLine();
-            }
+                try
+                {
+                    int sprintTime = 30;
+
+                    while (sprintTime > 0)
+                    {
+                        for (int i = 0; i < tasksList.Length; i++)
+                        {
+                            float statusValue = tasksList[i].WorkIteration();
+
+                            if (statusValue < 1)
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        sprintTime--;
+                    }
+
+                    loop = false;
+
+                }
+                catch (Exception e)
+                {
+                    Console.Clear();
+                    Console.WriteLine(e.Message);
+                    loop = true;
+                }
+            } while (loop);
+
+            PrintSprintResult(tasksList);
         }
 
         public static string GetValue(string title, string description = null)
         {
-            Console.Clear();
+            string value = null;
+            bool loop = true;
 
-            Console.WriteLine($"Please enter {title}");
-
-            if(! string.IsNullOrEmpty(description))
+            while (loop)
             {
-                Console.WriteLine(description);
-            }
+                try
+                {
+                    Console.WriteLine($"Please enter {title}");
 
-            string value = Console.ReadLine();
+                    if (!string.IsNullOrEmpty(description))
+                    {
+                        Console.WriteLine(description);
+                    }
 
-            if(string.IsNullOrEmpty(value))
-            {
-                throw new Exception($"{title} can't be empty.");
+                    value = Console.ReadLine();
+
+                    if (string.IsNullOrEmpty(value))
+                    {
+                        throw new Exception($"{title} can't be empty.");
+                    }
+
+                    loop = false;
+                }
+                catch (Exception e)
+                {
+                    Console.Clear();
+                    Console.WriteLine(e.Message);
+                }
             }
 
             return value;
@@ -102,9 +154,10 @@ namespace BagTraker
 
             for (int i = 0; i < tasksList.Length; i++)
             {
+                
                 type = (TaskType)int.Parse(NumberValidation(GetValue(title, description)));
                 name = GetValue(nameTitle);
-                complexity = NumberValidation(GetValue(complexityTitle, complexityDescription));
+                complexity = GetValue(complexityTitle, complexityDescription);
 
                 switch(type)
                 {
